@@ -12,6 +12,8 @@ struct TimerView: View {
     var duration: Duration
     let maxDuration: Duration
     @State var remaining: Duration
+    @State var isExpired: Bool = false
+    @State var color: Color = .green
 
     init(duration: Duration) {
         self.duration = duration
@@ -20,12 +22,17 @@ struct TimerView: View {
     }
 
     var body: some View {
-        Visual(total: CGFloat(maxDuration.components.seconds), remaining: CGFloat(remaining.components.seconds))
+        Visual(color: color, total: CGFloat(maxDuration.components.seconds), remaining: CGFloat(remaining.components.seconds))
+            .modifier(ShakeEffect(shakes: isExpired ? 1 : 0))
             .onAppear {
                 self.timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
                     remaining -= .seconds(1)
                     if remaining.components.seconds <= 0 {
                         timer.invalidate()
+                        self.color = .red
+                        withAnimation(.default.repeatCount(10).speed(3)) {
+                            self.isExpired = true
+                        }
                     }
                 }
             }

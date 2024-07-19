@@ -30,10 +30,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Status bar icon SwiftUI view & a hosting view.
         //
         let iconSwiftUI = ZStack {
-            TimerView(duration: .seconds(60 * 60))
+            TimerView(duration: .seconds(60 * 30))
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
                 .padding(.horizontal, 4)
-                .padding(.vertical, 1)
         }
 
         let iconView = NSHostingView(rootView: iconSwiftUI)
