@@ -7,19 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F22F4F5F2C4AD6C100521FAF /* Visual.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22F4F5E2C4AD6C100521FAF /* Visual.swift */; };
 		F25F05E22C47174700BCC65F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25F05E12C47174700BCC65F /* AppDelegate.swift */; };
-		F25F05E42C47174700BCC65F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25F05E32C47174700BCC65F /* ViewController.swift */; };
 		F25F05E62C47174800BCC65F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F25F05E52C47174800BCC65F /* Assets.xcassets */; };
-		F25F05E92C47174800BCC65F /* Base in Resources */ = {isa = PBXBuildFile; fileRef = F25F05E82C47174800BCC65F /* Base */; };
+		F25F05F82C471D6E00BCC65F /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25F05F72C471D6E00BCC65F /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F22F4F5E2C4AD6C100521FAF /* Visual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Visual.swift; sourceTree = "<group>"; };
 		F25F05DE2C47174700BCC65F /* HelloMenuBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloMenuBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F25F05E12C47174700BCC65F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F25F05E32C47174700BCC65F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F25F05E52C47174800BCC65F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F25F05E82C47174800BCC65F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F25F05EA2C47174800BCC65F /* HelloMenuBar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HelloMenuBar.entitlements; sourceTree = "<group>"; };
+		F25F05F72C471D6E00BCC65F /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,11 +52,11 @@
 		F25F05E02C47174700BCC65F /* HelloMenuBar */ = {
 			isa = PBXGroup;
 			children = (
+				F25F05F72C471D6E00BCC65F /* main.swift */,
 				F25F05E12C47174700BCC65F /* AppDelegate.swift */,
-				F25F05E32C47174700BCC65F /* ViewController.swift */,
 				F25F05E52C47174800BCC65F /* Assets.xcassets */,
-				F25F05E72C47174800BCC65F /* Main.storyboard */,
 				F25F05EA2C47174800BCC65F /* HelloMenuBar.entitlements */,
+				F22F4F5E2C4AD6C100521FAF /* Visual.swift */,
 			);
 			path = HelloMenuBar;
 			sourceTree = "<group>";
@@ -120,7 +120,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F25F05E62C47174800BCC65F /* Assets.xcassets in Resources */,
-				F25F05E92C47174800BCC65F /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,23 +130,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F25F05E42C47174700BCC65F /* ViewController.swift in Sources */,
+				F25F05F82C471D6E00BCC65F /* main.swift in Sources */,
+				F22F4F5F2C4AD6C100521FAF /* Visual.swift in Sources */,
 				F25F05E22C47174700BCC65F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		F25F05E72C47174800BCC65F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F25F05E82C47174800BCC65F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		F25F05EB2C47174800BCC65F /* Debug */ = {
@@ -280,8 +269,10 @@
 				DEVELOPMENT_TEAM = WW59U84Z7X;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HelloMenuBar/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -307,8 +298,10 @@
 				DEVELOPMENT_TEAM = WW59U84Z7X;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HelloMenuBar/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
