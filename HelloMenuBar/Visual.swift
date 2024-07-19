@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct Visual: View {
+    var color: Color = .green
+    
+    var total: CGFloat = 100
+    var remaining: CGFloat = 100
+
     var body: some View {
         Canvas(
             opaque: true,
@@ -18,45 +23,49 @@ struct Visual: View {
             context.translateBy(x: size.width * 0.5, y: size.height * 0.5)
             context.rotate(by: .degrees(-90))
 
-            let gapWidth = CGFloat(3.0)
-            let gapAngle = Angle(radians: Double(atan((gapWidth / 2) / radius)))
-            let segment = Angle(degrees: 90)
-
-            var currentAngle = Angle.zero
-
-            for _ in 0 ..< 4 {
-                let startAngle = currentAngle + (gapAngle / 2)
-                let endAngle = currentAngle + segment - (gapAngle / 2)
-
-                // Move each segment outward along the line from the center to the midpoint of
-                // the segment by the distance equal to half of the gap size.
-                let midpointAngle = (startAngle + endAngle) / 2
-
-                let gapOffset = CGPoint(
-                    x: CGFloat(gapWidth / 2) * cos(CGFloat(midpointAngle.radians)),
-                    y: CGFloat(gapWidth / 2) * sin(CGFloat(midpointAngle.radians))
+            let bgPath = Path { p in
+                p.move(to: .zero)
+                p.addArc(
+                    center: .zero,
+                    radius: radius,
+                    startAngle: .zero,
+                    endAngle: Angle(degrees: 360),
+                    clockwise: false
                 )
-
-                let path = Path { p in
-                    p.move(to: gapOffset)
-                    p.addArc(
-                        center: .zero,
-                        radius: radius,
-                        startAngle: startAngle,
-                        endAngle: endAngle,
-                        clockwise: false
-                    )
-                    p.closeSubpath()
-                }
-
-                context.fill(path, with: .color(.black.opacity(0.1)))
-
-                currentAngle += segment
+                p.closeSubpath()
             }
+
+            context.fill(bgPath, with: .color(color.opacity(0.15)))
+
+            let path = Path { p in
+                p.move(to: .zero)
+                p.addArc(
+                    center: .zero,
+                    radius: radius,
+                    startAngle: .zero,
+                    endAngle: Angle(degrees: 360) * (remaining / total),
+                    clockwise: false
+                )
+                p.closeSubpath()
+            }
+
+            context.fill(path, with: .color(color.opacity(0.75)))
         }
     }
 }
 
-#Preview {
-    Visual()
+#Preview("0.75 remaining") {
+    Visual(total: 60.0, remaining: 45.0)
+}
+
+#Preview("0.5 remaining") {
+    Visual(total: 60.0, remaining: 30.0)
+}
+
+#Preview("0.25 remaining") {
+    Visual(total: 60.0, remaining: 15.0)
+}
+
+#Preview("-0.25 remaining") {
+    Visual(total: 60.0, remaining: 85.0)
 }

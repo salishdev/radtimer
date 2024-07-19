@@ -7,14 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F22F4F5F2C4AD6C100521FAF /* Visual.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22F4F5E2C4AD6C100521FAF /* Visual.swift */; };
+		F22F4F5F2C4AD6C100521FAF /* SegmentedVisual.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22F4F5E2C4AD6C100521FAF /* SegmentedVisual.swift */; };
+		F242BE312C4AF557007CDFAF /* Visual.swift in Sources */ = {isa = PBXBuildFile; fileRef = F242BE302C4AF557007CDFAF /* Visual.swift */; };
+		F242BE332C4AFA5F007CDFAF /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F242BE322C4AFA5F007CDFAF /* TimerView.swift */; };
 		F25F05E22C47174700BCC65F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25F05E12C47174700BCC65F /* AppDelegate.swift */; };
 		F25F05E62C47174800BCC65F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F25F05E52C47174800BCC65F /* Assets.xcassets */; };
 		F25F05F82C471D6E00BCC65F /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25F05F72C471D6E00BCC65F /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		F22F4F5E2C4AD6C100521FAF /* Visual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Visual.swift; sourceTree = "<group>"; };
+		F22F4F5E2C4AD6C100521FAF /* SegmentedVisual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedVisual.swift; sourceTree = "<group>"; };
+		F242BE302C4AF557007CDFAF /* Visual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Visual.swift; sourceTree = "<group>"; };
+		F242BE322C4AFA5F007CDFAF /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		F25F05DE2C47174700BCC65F /* HelloMenuBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloMenuBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F25F05E12C47174700BCC65F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F25F05E52C47174800BCC65F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -56,7 +60,9 @@
 				F25F05E12C47174700BCC65F /* AppDelegate.swift */,
 				F25F05E52C47174800BCC65F /* Assets.xcassets */,
 				F25F05EA2C47174800BCC65F /* HelloMenuBar.entitlements */,
-				F22F4F5E2C4AD6C100521FAF /* Visual.swift */,
+				F22F4F5E2C4AD6C100521FAF /* SegmentedVisual.swift */,
+				F242BE302C4AF557007CDFAF /* Visual.swift */,
+				F242BE322C4AFA5F007CDFAF /* TimerView.swift */,
 			);
 			path = HelloMenuBar;
 			sourceTree = "<group>";
@@ -130,9 +136,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F242BE332C4AFA5F007CDFAF /* TimerView.swift in Sources */,
 				F25F05F82C471D6E00BCC65F /* main.swift in Sources */,
-				F22F4F5F2C4AD6C100521FAF /* Visual.swift in Sources */,
+				F22F4F5F2C4AD6C100521FAF /* SegmentedVisual.swift in Sources */,
 				F25F05E22C47174700BCC65F /* AppDelegate.swift in Sources */,
+				F242BE312C4AF557007CDFAF /* Visual.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

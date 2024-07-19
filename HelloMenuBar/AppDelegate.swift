@@ -23,30 +23,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             TextField("foo", text: .constant("bar"))
             Color.white
         }.padding()
-        
+
         let contentView = NSHostingView(rootView: contentViewSwiftUI)
         contentView.frame = NSRect(x: 0, y: 0, width: 200, height: 200)
 
         // Status bar icon SwiftUI view & a hosting view.
         //
-        let iconSwiftUI = ZStack(alignment: .center) {
-            Visual()
-//            Rectangle()
-//                .fill(Color.green)
-//                .cornerRadius(5)
-//                .padding(2)
-//
-//            Text("3")
-//                .background(
-//                    Circle()
-//                        .fill(Color.blue)
-//                        .frame(width: 15, height: 15)
-//                )
+        let iconSwiftUI = ZStack {
+            TimerView(duration: .seconds(60 * 60))
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
-                .padding(.trailing, 5)
+                .padding(.horizontal, 4)
+                .padding(.vertical, 1)
         }
+
         let iconView = NSHostingView(rootView: iconSwiftUI)
-        iconView.frame = NSRect(x: 0, y: 0, width: 40, height: 22)
+        iconView.frame = NSRect(x: 0, y: 0, width: 26, height: 22)
 
         // Creating a menu item & the menu to add them later into the status bar
         //
