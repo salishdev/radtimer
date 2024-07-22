@@ -6,12 +6,19 @@
 //
 
 import Cocoa
+import ComposableArchitecture
 import SwiftUI
+import TimerFeature
 
-class AppDelegate: NSObject, NSApplicationDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     var statusBar: NSStatusBar!
+    var statusBarMenu: NSMenu!
     var statusItem: NSStatusItem!
     var isMuted: Bool = false
+
+    let store: StoreOf<TimerFeature.Timer> = Store(initialState: TimerFeature.Timer.State(duration: 5)) {
+        TimerFeature.Timer()
+    }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // SwiftUI content view & a hosting view
@@ -30,7 +37,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Status bar icon SwiftUI view & a hosting view.
         //
         let iconSwiftUI = ZStack {
-            TimerView(duration: .seconds(60 * 30))
+            CircularAnalogView(store: self.store)
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
                 .padding(.horizontal, 4)
         }
@@ -42,13 +49,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         //
         let menuItem = NSMenuItem()
         menuItem.view = contentView
-        let menu = NSMenu()
-        menu.addItem(menuItem)
+        statusBarMenu = NSMenu()
+        statusBarMenu.delegate = self
+        statusBarMenu.addItem(menuItem)
 
         // Adding content view to the status bar
         //
         let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-        statusItem.menu = menu
+        statusItem.button?.action = #selector(statusBarButtonClicked(sender:))
+        statusItem.button?.sendAction(on: [.leftMouseUp, .rightMouseUp])
+//        statusItem.menu = menu
 
         // Adding the status bar icon
         //
@@ -65,5 +75,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {
         return true
+    }
+
+    @objc func statusBarButtonClicked(sender: NSStatusBarButton) {
+        let event = NSApp.currentEvent!
+        if event.type == NSEvent.EventType.rightMouseUp {
+            statusItem.menu = statusBarMenu
+            statusItem.button?.performClick(nil)
+        } else {
+            store.send(.toggleTimerButtonTapped)
+        }
+    }
+
+    @objc func menuDidClose(_ menu: NSMenu) {
+        statusItem.menu = nil // remove menu so button works as before
     }
 }
