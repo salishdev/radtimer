@@ -23,7 +23,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // SwiftUI content view & a hosting view
         // Don't forget to set the frame, otherwise it won't be shown.
-        //
         let contentViewSwiftUI = VStack {
             Color.blue
             Text("Test Text")

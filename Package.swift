@@ -4,7 +4,7 @@ import PackageDescription
 
 let package = Package(
     name: "RadTimer",
-    platforms: [.iOS(.v15), .macOS(.v13)],
+    platforms: [.iOS(.v16), .macOS(.v13)],
     products: [
         .library(name: "TimerFeature", targets: ["TimerFeature"]),
 
