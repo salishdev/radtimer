@@ -16,26 +16,20 @@ struct MyButtonStyle: ButtonStyle {
     }
 }
 
-struct MenuButton<Label>: View where Label: View {
+struct MenuButton: View {
     let imageName: String
-    let label: Label
+
     let action: () -> Void
 
     var body: some View {
         Button(action: action, label: {
-            HStack {
-                Image(systemName: imageName)
-                    .frame(width: 16, height: 16)
-                    .scaleEffect(1.4)
-                    .padding(8)
-                    .background(.white.opacity(0.2), in: Circle())
-                label
-                    .padding(.leading, 3)
-                Spacer()
-            }
-            .frame(maxWidth: .infinity)
-            .padding(.horizontal, 5)
-            .padding(.vertical, 2)
+            Image(systemName: imageName)
+                .imageScale(.large)
+                .frame(width: 16, height: 16)
+                .padding(6)
+                .background(.white.opacity(0.2), in: Circle())
+                .padding(.horizontal, 5)
+                .padding(.vertical, 2)
         }).buttonStyle(MyButtonStyle())
     }
 }
@@ -50,22 +44,25 @@ public struct MenuView: View {
     }
 
     public var body: some View {
-        VStack(alignment: .center, spacing: 0) {
-            MenuButton(imageName: "play.fill", label: Text("Start Timer")) {
-                store.send(.toggleTimerButtonTapped)
-                onClose()
+        VStack(spacing: 5) {
+            Text(store.formattedTimeRemaining)
+                .font(.system(size: 36, weight: .light, design: .monospaced))
+                .minimumScaleFactor(0.01)
+
+            HStack(alignment: .center, spacing: 0) {
+                MenuButton(imageName: store.isTimerOn ? "pause.fill" : "play.fill") {
+                    store.send(.toggleTimerButtonTapped)
+                    onClose()
+                }
+
+                MenuButton(imageName: "arrow.counterclockwise") {
+                    store.send(.resetTimerButtonTapped)
+                    onClose()
+                }
             }
-            MenuButton(imageName: "pause.fill", label: Text("Stop Timer")) {
-                store.send(.toggleTimerButtonTapped)
-                onClose()
-            }
-            MenuButton(imageName: "trash.fill", label: Text("Reset Timer")) {
-//                store.send()
-                onClose()
-            }
-            Spacer()
+            .padding(.horizontal, 4)
         }
-        .padding(.horizontal, 4)
+        .padding(5)
     }
 }
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F21817272C52FAB2000AF62E /* Update.caf in Resources */ = {isa = PBXBuildFile; fileRef = F21817262C52FAB2000AF62E /* Update.caf */; };
 		F23C00792C4EFDCB001CC24C /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = F23C00782C4EFDCB001CC24C /* ComposableArchitecture */; };
 		F23C007C2C4EFE22001CC24C /* TimerFeature in Frameworks */ = {isa = PBXBuildFile; productRef = F23C007B2C4EFE22001CC24C /* TimerFeature */; };
 		F242BE352C4B091F007CDFAF /* ShakeEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = F242BE342C4B091F007CDFAF /* ShakeEffect.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F21817262C52FAB2000AF62E /* Update.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Update.caf; sourceTree = "<group>"; };
 		F227E1F42C4EDB7F001BB460 /* RadTimer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = RadTimer; path = ..; sourceTree = "<group>"; };
 		F242BE342C4B091F007CDFAF /* ShakeEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeEffect.swift; sourceTree = "<group>"; };
 		F25F05DE2C47174700BCC65F /* HelloMenuBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloMenuBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -38,6 +40,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F21817252C52FA9E000AF62E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F21817262C52FAB2000AF62E /* Update.caf */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		F23C007A2C4EFE22001CC24C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -66,6 +76,7 @@
 		F25F05E02C47174700BCC65F /* HelloMenuBar */ = {
 			isa = PBXGroup;
 			children = (
+				F21817252C52FA9E000AF62E /* Resources */,
 				F242BE342C4B091F007CDFAF /* ShakeEffect.swift */,
 				F25F05F72C471D6E00BCC65F /* main.swift */,
 				F25F05E12C47174700BCC65F /* AppDelegate.swift */,
@@ -141,6 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F25F05E62C47174800BCC65F /* Assets.xcassets in Resources */,
+				F21817272C52FAB2000AF62E /* Update.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

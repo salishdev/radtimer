@@ -18,6 +18,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
 
     let store: StoreOf<TimerFeature.Timer> = Store(initialState: TimerFeature.Timer.State(duration: 5)) {
         TimerFeature.Timer()
+    } withDependencies: {
+        $0.soundEffectClient.load(sound: .update)
     }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
@@ -76,10 +78,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     @objc func statusBarButtonClicked(sender: NSStatusBarButton) {
         let event = NSApp.currentEvent!
         if event.type == NSEvent.EventType.rightMouseUp {
+            store.send(.toggleTimerButtonTapped)
+        } else {
             statusItem.menu = statusBarMenu
             statusItem.button?.performClick(nil)
-        } else {
-            store.send(.toggleTimerButtonTapped)
         }
     }
 
