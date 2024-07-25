@@ -21,17 +21,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // SwiftUI content view & a hosting view
-        // Don't forget to set the frame, otherwise it won't be shown.
-        let contentViewSwiftUI = VStack {
-            Color.blue
-            Text("Test Text")
-            TextField("foo", text: .constant("bar"))
-            Color.white
-        }.padding()
-
-        let contentView = NSHostingView(rootView: contentViewSwiftUI)
-        contentView.frame = NSRect(x: 0, y: 0, width: 200, height: 200)
+        let contentView = NSHostingView(rootView: TimerFeature.MenuView(
+            store: store,
+            onClose: { [weak self] in
+                guard let self = self else { return }
+                self.statusItem.button?.performClick(nil)
+            })
+        )
+        contentView.frame = NSRect(x: 0, y: 0, width: 150, height: 120)
 
         // Status bar icon SwiftUI view & a hosting view.
         //
