@@ -1,6 +1,6 @@
-name: RadTimer
+name: RadialTimer
 options:
-  bundleIdPrefix: astere.software
+  bundleIdPrefix: software.astere
   indentWidth: 4
   tabWidth: 4
   localPackagesGroup: ''
@@ -22,7 +22,7 @@ configFiles:
   Prod Release: Configuration/Prod.xcconfig
 
 packages:
-  RadTimer:
+  RadialTimer:
     path: ../
 
 settings:
@@ -37,8 +37,8 @@ targetTemplates:
     info:
       path: ${target_name}/Info.plist
       properties:
-        CFBundleName: RadTimer
-        CFBundleDisplayName: RadTimer
+        CFBundleName: RadialTimer
+        CFBundleDisplayName: RadialTimer
         CFBundleShortVersionString: '0.1'
         CFBundleVersion: '0'
         LSMinimumSystemVersion: '13.0'
@@ -51,7 +51,7 @@ targetTemplates:
 
 targets:
   macOS:
-    name: RadTimer
+    name: RadialTimer
     templates:
       - Base
       - Configuration
@@ -85,7 +85,7 @@ targets:
           - $(AppIdentifierPrefix)app.majr.SharedItems
 
     dependencies:
-      - package: RadTimer
+      - package: RadialTimer
         products:
           - TimerFeature
           - SoundEffectClient

@@ -3,7 +3,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "RadTimer",
+    name: "RadialTimer",
     platforms: [.macOS(.v13)],
     products: [
         .library(name: "TimerFeature", targets: ["TimerFeature"]),
