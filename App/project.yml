@@ -1,0 +1,91 @@
+name: RadTimer
+options:
+  bundleIdPrefix: astere.software
+  indentWidth: 4
+  tabWidth: 4
+  localPackagesGroup: ''
+
+configs:
+  Local Debug: debug
+  Dev Debug: debug
+  Prod Debug: debug
+  Local Release: release
+  Dev Release: release
+  Prod Release: release
+
+configFiles:
+  Local Debug: Configuration/Local.xcconfig
+  Local Release: Configuration/Local.xcconfig
+  Dev Debug: Configuration/Dev.xcconfig
+  Dev Release: Configuration/Dev.xcconfig
+  Prod Debug: Configuration/Prod.xcconfig
+  Prod Release: Configuration/Prod.xcconfig
+
+packages:
+  RadTimer:
+    path: ../
+
+settings:
+  DEVELOPMENT_TEAM: WW59U84Z7X
+
+targetTemplates:
+  Base:
+    settings:
+      base:
+        SUPPORTED_PLATFORMS: macosx
+
+    info:
+      path: ${target_name}/Info.plist
+      properties:
+        CFBundleName: RadTimer
+        CFBundleDisplayName: RadTimer
+        CFBundleShortVersionString: '0.1'
+        CFBundleVersion: '0'
+        LSMinimumSystemVersion: '13.0'
+
+  Configuration:
+    info:
+      path: ${target_name}/Info.plist
+      properties:
+        ENVIRONMENT: $(ENVIRONMENT)
+
+targets:
+  macOS:
+    name: RadTimer
+    templates:
+      - Base
+      - Configuration
+    type: application
+    platform: macOS
+    deploymentTarget: 13.0
+    sources:
+      - path: ${target_name}
+
+    scheme:
+      environmentVariables:
+        PATH: PATH=${PATH}:/usr/local/bin
+
+      configVariants:
+        - Local
+        - Dev
+        - Prod
+
+    info:
+      path: ${target_name}/Info.plist
+      properties:
+        CFBundlePackageType: APPL
+        ITSAppUsesNonExemptEncryption: false
+
+    entitlements:
+      path: ${target_name}/${target_name}.entitlements
+      properties:
+        com.apple.security.application-groups:
+          - group.app.majr.mx
+        keychain-access-groups:
+          - $(AppIdentifierPrefix)app.majr.SharedItems
+
+    dependencies:
+      - package: RadTimer
+        products:
+          - TimerFeature
+          - SoundEffectClient

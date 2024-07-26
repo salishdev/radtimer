@@ -1,10 +1,3 @@
-//
-//  Visual.swift
-//  HelloMenuBar
-//
-//  Created by Jeremy Jones on 7/19/24.
-//
-
 import SwiftUI
 
 struct Visual: View {

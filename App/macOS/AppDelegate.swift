@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  HelloMenuBar
-//
-//  Created by Jeremy Jones on 7/16/24.
-//
-
 import Cocoa
 import ComposableArchitecture
 import SwiftUI
