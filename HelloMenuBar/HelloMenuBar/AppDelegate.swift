@@ -16,7 +16,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     var statusItem: NSStatusItem!
     var isMuted: Bool = false
 
-    let store: StoreOf<TimerFeature.Timer> = Store(initialState: TimerFeature.Timer.State(duration: 5)) {
+    let store: StoreOf<TimerFeature.Timer> = Store(initialState: TimerFeature.Timer.State()) {
         TimerFeature.Timer()
     } withDependencies: {
         $0.soundEffectClient.load(sound: .update)

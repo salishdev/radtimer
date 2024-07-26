@@ -1,5 +1,6 @@
 import ComposableArchitecture
 import SwiftUI
+import SwiftUIIntrospect
 
 struct MyButtonStyle: ButtonStyle {
     @State var isHovering = false
@@ -35,7 +36,7 @@ struct MenuButton: View {
 }
 
 public struct MenuView: View {
-    public let store: StoreOf<Timer>
+    @Perception.Bindable public var store: StoreOf<Timer>
     public let onClose: () -> Void
 
     public init(store: StoreOf<Timer>, onClose: @escaping () -> Void = {}) {
@@ -61,6 +62,17 @@ public struct MenuView: View {
                 }
             }
             .padding(.horizontal, 4)
+
+            Slider(
+                value: $store.durationAsDouble.sending(\.durationChanged),
+                in: 60 * 5 ... 60 * 60 * 2,
+                step: 60 * 5
+            )
+            .padding(.horizontal, 4)
+            .introspect(.slider, on: .macOS(.v10_15, .v11, .v12, .v13, .v14, .v15)) { slider in
+                slider.numberOfTickMarks = 0
+                slider.trackFillColor = NSColor.white
+            }
         }
         .padding(5)
     }

@@ -9,10 +9,14 @@ public struct Timer {
     @ObservableState
     public struct State: Equatable {
         public var timeRemaining: Int
-        public var duration: Int
+        @Shared public var duration: Int
         public var isTimerOn: Bool
         public var isTimerExpired: Bool
         public var color: Color
+
+        public var durationAsDouble: Double {
+            Double(duration)
+        }
 
         public var formattedTimeRemaining: String {
             var rem = timeRemaining
@@ -26,14 +30,15 @@ public struct Timer {
             return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
         }
 
-        public init(timeRemaining: Int = 60 * 60 * 60,
-                    duration: Int = 60 * 60 * 60,
+        public init(timeRemaining: Int? = nil,
+                    duration: @escaping @autoclosure () -> Int = 60 * 60,
                     isTimerOn: Bool = false,
                     isTimerExpired: Bool = false,
-                    color: Color = .black)
+                    color: Color = Color.primary)
         {
-            self.timeRemaining = min(timeRemaining, duration)
-            self.duration = duration
+            self._duration = Shared(wrappedValue: duration(), .appStorage("duration"))
+            self.timeRemaining = min(timeRemaining ?? Int.max, _duration.wrappedValue)
+
             self.isTimerOn = isTimerOn
             self.isTimerExpired = isTimerExpired
             self.color = color
@@ -44,6 +49,7 @@ public struct Timer {
         case toggleTimerButtonTapped
         case resetTimerButtonTapped
         case timerTicked
+        case durationChanged(Double)
     }
 
     private enum CancelID {
@@ -76,6 +82,7 @@ public struct Timer {
                 }
 
             case .resetTimerButtonTapped:
+                print(state.duration)
                 state.timeRemaining = state.duration
                 state.isTimerExpired = false
                 state.isTimerOn = false
@@ -95,6 +102,14 @@ public struct Timer {
                 }
 
                 return .none
+
+            case let .durationChanged(value):
+                state.duration = Int(value)
+                state.timeRemaining = state.duration
+                state.isTimerExpired = false
+                state.isTimerOn = false
+
+                return .cancel(id: CancelID.timer)
             }
         }
     }

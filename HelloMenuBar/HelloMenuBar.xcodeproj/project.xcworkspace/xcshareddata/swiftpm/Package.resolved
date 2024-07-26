@@ -1,5 +1,5 @@
 {
-  "originHash" : "fc83d4c97839ac298e04afadb9267dd76528a411457a6cb52dc72e4b86f50850",
+  "originHash" : "c0ac1cf8342a0bcaf2faae2b6e2c15ee575720c78287d0f0ac789b7ac0d45cf0",
   "pins" : [
     {
       "identity" : "combine-schedulers",
@@ -98,6 +98,15 @@
       "state" : {
         "revision" : "303e5c5c36d6a558407d364878df131c3546fad8",
         "version" : "510.0.2"
+      }
+    },
+    {
+      "identity" : "swiftui-introspect",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/siteline/swiftui-introspect",
+      "state" : {
+        "revision" : "807f73ce09a9b9723f12385e592b4e0aaebd3336",
+        "version" : "1.3.0"
       }
     },
     {

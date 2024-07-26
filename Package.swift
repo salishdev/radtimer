@@ -16,6 +16,7 @@ let package = Package(
             from: "1.0.0"
         ),
         .package(url: "https://github.com/pointfreeco/xctest-dynamic-overlay", from: "1.0.0"),
+        .package(url: "https://github.com/siteline/swiftui-introspect", from: "1.3.0"),
     ],
     targets: [
         .target(
@@ -26,6 +27,7 @@ let package = Package(
                     name: "ComposableArchitecture",
                     package: "swift-composable-architecture"
                 ),
+                .product(name: "SwiftUIIntrospect", package: "swiftui-introspect"),
             ]
         ),
         .target(
