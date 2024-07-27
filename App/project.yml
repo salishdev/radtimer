@@ -80,10 +80,7 @@ targets:
     entitlements:
       path: ${target_name}/${target_name}.entitlements
       properties:
-        com.apple.security.application-groups:
-          - group.app.majr.mx
-        keychain-access-groups:
-          - $(AppIdentifierPrefix)app.majr.SharedItems
+        com.apple.security.app-sandbox: true
 
     dependencies:
       - package: RadialTimer

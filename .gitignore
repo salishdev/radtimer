@@ -119,3 +119,4 @@ fastlane/test_output
 iOSInjectionProject/
 
 **/Info.plist
+**/*.entitlements
