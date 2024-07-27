@@ -75,6 +75,7 @@ targets:
       properties:
         CFBundlePackageType: APPL
         ITSAppUsesNonExemptEncryption: false
+        LSApplicationCategoryType: public.app-category.productivity
 
     entitlements:
       path: ${target_name}/${target_name}.entitlements
