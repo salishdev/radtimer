@@ -60,6 +60,10 @@ public struct MenuView: View {
                     store.send(.resetTimerButtonTapped)
                     onClose()
                 }
+
+                MenuButton(imageName: "power") {
+                    NSApplication.shared.terminate(self)
+                }
             }
             .padding(.horizontal, 4)
 
